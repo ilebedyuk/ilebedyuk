@@ -1,0 +1,16 @@
+<listbox apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('org.mvvm.viewModel.BookViewModel')"
+         model="@bind(vm.books)"
+         emptyMessage="No book found in the result"
+         selectedItem="@bind(vm.selectedBook)">
+    <listhead>
+        <listheader label="ID" />
+        <listheader label="NAME" />
+    </listhead>
+    <template name="model">
+        <listitem>
+            <listcell label="@bind(each.id)"></listcell>
+            <listcell label="@bind(each.name)"></listcell>
+        </listitem>
+    </template>
+</listbox>

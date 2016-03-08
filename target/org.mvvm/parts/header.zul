@@ -1,0 +1,20 @@
+<div hflex="1" vflex="1" sclass="banner">
+    <hbox hflex="1" vflex="1" align="center">
+        <a href="http://www.zkoss.org/">
+            <image src="/img/zklogo3.png" width="90px" />
+        </a>
+        <div width="400px">
+            <label value="First application" sclass="banner-head" />
+        </div>
+        <hbox hflex="1" vflex="1" pack="end" align="end">
+            Anonymous
+        </hbox>
+    </hbox>
+    <style>
+        .banner {
+        background-color:#102d35;
+        color: white;
+        padding: 5px 10px;
+        }
+    </style>
+</div>

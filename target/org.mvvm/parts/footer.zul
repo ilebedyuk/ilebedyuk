@@ -1,0 +1,13 @@
+<div hflex="1" vflex="1" sclass="footer">
+    <vbox hflex="1" vflex="1" align="center">
+        ZK Essentials, you are using ZK ${desktop.webApp.version}
+        <a href="http://www.zkoss.org">http://www.zkoss.org</a>
+    </vbox>
+    <style>
+        .footer {
+        background-color:#102d35;
+        color: white;
+        padding: 5px 10px;
+        }
+    </style>
+</div>

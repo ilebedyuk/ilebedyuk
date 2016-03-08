@@ -1,0 +1,28 @@
+<window title="Please enter password and password" width="auto" border="normal" apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.mvvm.viewModel.FormValidator')">
+    <div align="center">
+        <vbox align="center" hflex="min">
+            <grid hflex="min">
+                <columns>
+                    <column hflex="min" align="right"/>
+                    <column/>
+                </columns>
+                <rows>
+                    <row>
+                        Login:
+                        <textbox value="@bind(vm.login)"  width="200px"/>
+                    </row>
+                    <row>
+                        Password:
+                        <textbox value="@bind(vm.password)" type="password"	 width="200px"/>
+                    </row>
+                    <row align="right">
+                        <label/>
+                        <button label="Login" onClick="@command('login')"/>
+                    </row>
+                </rows>
+            </grid>
+        </vbox>
+    </div>
+
+</window>

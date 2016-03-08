@@ -1,0 +1,6 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/layout/template.zul"?>
+<zk>
+    <include id="mainInclude" self="@define(content)" apply="org.zkoss.bind.BindComposer"
+             viewModel="@id('vm') @init('org.mvvm.viewModel.NavigationViewModel')"
+             src="@load(vm.includeSrc)" />
+</zk>

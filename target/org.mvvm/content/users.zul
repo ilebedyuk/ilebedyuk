@@ -1,0 +1,18 @@
+<listbox apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('org.mvvm.viewModel.UsersViewModel')"
+         model="@bind(vm.users)"
+         emptyMessage="No user found in the result"
+         selectedItem="@bind(vm.selectedUser)">
+    <listhead>
+        <listheader label="ID" />
+        <listheader label="USERNAME" />
+        <listheader label="PASSWORD" />
+    </listhead>
+    <template name="model">
+        <listitem>
+            <listcell label="@bind(each.id)"></listcell>
+            <listcell label="@bind(each.name)"></listcell>
+            <listcell label="@bind(each.password)"></listcell>
+        </listitem>
+    </template>
+</listbox>
