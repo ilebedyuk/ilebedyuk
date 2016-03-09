@@ -1,18 +1,29 @@
-<listbox apply="org.zkoss.bind.BindComposer"
-         viewModel="@id('vm') @init('org.mvvm.viewModel.UsersViewModel')"
-         model="@bind(vm.users)"
-         emptyMessage="No user found in the result"
-         selectedItem="@bind(vm.selectedUser)">
-    <listhead>
-        <listheader label="ID" />
-        <listheader label="USERNAME" />
-        <listheader label="PASSWORD" />
-    </listhead>
-    <template name="model">
-        <listitem>
-            <listcell label="@bind(each.id)"></listcell>
-            <listcell label="@bind(each.name)"></listcell>
-            <listcell label="@bind(each.password)"></listcell>
-        </listitem>
-    </template>
-</listbox>
+<window apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.mvvm.viewModel.UsersViewModel')">
+    <vbox>
+        <hbox>
+            <button label="Add User" onClick="@command('showAddUser')"/>
+            <button label="Edit" onClick="@command('showEditUser')" disabled="@bind(empty vm.selectedUser)"/>
+            <button label="Remove" onClick="@command('removeUser')" disabled="@bind(empty vm.selectedUser)"/>
+            <!--<button label="Refresh" onClick="@command('refreshUsers')"/>-->
+        </hbox>
+        <listbox apply="org.zkoss.bind.BindComposer"
+                 viewModel="@id('vm') @init('org.mvvm.viewModel.UsersViewModel')"
+                 model="@bind(vm.users)"
+                 emptyMessage="No user found in the result"
+                 selectedItem="@bind(vm.selectedUser)">
+            <listhead>
+                <listheader label="ID" />
+                <listheader label="USERNAME" />
+                <listheader label="PASSWORD" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="@bind(each.id)"></listcell>
+                    <listcell label="@bind(each.name)"></listcell>
+                    <listcell label="@bind(each.password)"></listcell>
+                </listitem>
+            </template>
+        </listbox>
+    </vbox>
+</window>

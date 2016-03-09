@@ -25,8 +25,7 @@ public class UserConvertor {
         User u = new User();
         u.setName((String) doc.get("name"));
         u.setPassword((String) doc.get("password"));
-        String id1 = ((String) doc.get("_id"));
-        u.setId(id1);
+        u.setId((Integer) doc.get("_id"));
         return u;
     }
 

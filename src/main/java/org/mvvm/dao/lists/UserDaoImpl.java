@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class UserDaoImpl implements IUser {
     private List<User> userList = new LinkedList<User>();
-    //private static int id = 1;
+    private static int id = 1;
 
     public UserDaoImpl(){
-        userList.add(new User("1", "test", "test"));
-        userList.add(new User("2", "Vasya", "test"));
-        userList.add(new User("3", "Petya", "123"));
+        userList.add(new User(id++, "test", "test"));
+//        userList.add(new User(id++, "Vasya", "test"));
+//        userList.add(new User(id++, "Petya", "123"));
     }
 
 
@@ -26,6 +26,12 @@ public class UserDaoImpl implements IUser {
 
     @Override
     public User readUser(User user) {
-        return userList.get(Integer.parseInt(user.getId()));
+        return userList.get(user.getId());
     }
+
+    @Override
+    public void save(String login, String password) {
+        userList.add(new User(id++, login, password));
+    }
+
 }

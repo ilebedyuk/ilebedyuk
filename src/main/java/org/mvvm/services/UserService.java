@@ -19,6 +19,10 @@ public class UserService {
         return iUser.findAllUsers();
     }
 
+    public void save(String login, String password) {
+        iUser.save(login,password);
+    }
+
 //    public User findUserById(int id){
 //        return iUser.readUser(id);
 //    }

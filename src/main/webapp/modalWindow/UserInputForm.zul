@@ -1,0 +1,38 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<window apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.mvvm.viewModel.UserInputViewModel')"
+        closable="true"
+        validationMessages="@id('vmsgs')"
+        onClose="self.visible = false; event.stopPropagation();"
+        title="User input"
+        border="none"
+        position="center"
+        width="500px">
+    <style src="/css/style.css" />
+    <groupbox id="form" form="@id('fx') @load(vm.user) @save(vm.user, before={'addUser', 'add'})
+                              @validator('org.mvvm.viewModel.FormValidatorForAddUser')"
+              hflex="min">
+        <grid >
+            <columns>
+                <column width="100px" />
+                <column width="auto" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="username"/>
+                    <textbox id="login" value="@bind(fx.name)"/>
+                    <label class ="error" value="@load(vmsgs['name'])" />
+                </row>
+                <row>
+                    <label value="password"/>
+                    <textbox id="password" value="@bind(fx.password)"/>
+                    <label class ="error" value="@load(vmsgs['password'])" />
+                </row>
+            </rows>
+        </grid>
+        <hbox>
+            <button iconSclass="z-icon-save" label="Add" onClick="@command('add') @global-command('refresh')"  />
+        </hbox>
+    </groupbox>
+</window>

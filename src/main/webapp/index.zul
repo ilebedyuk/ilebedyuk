@@ -1,4 +1,10 @@
-<window title="Please enter password and password" width="auto" border="normal" apply="org.zkoss.bind.BindComposer"
+
+
+<window title="Please enter login and password"
+        width="auto"
+        border="normal"
+        mode="overlapped" position="center"
+        apply="org.zkoss.bind.BindComposer"
         viewModel="@id('vm') @init('org.mvvm.viewModel.FormValidator')">
     <div align="center">
         <vbox align="center" hflex="min">
@@ -10,15 +16,19 @@
                 <rows>
                     <row>
                         Login:
-                        <textbox value="@bind(vm.login)"  width="200px"/>
+                        <!--<label value="login"/>-->
+                        <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+                        <textbox id="login" value="@bind(vm.login)"
+                                 constraint="${c:new('org.mvvm.validators.UserConstraintName')}" width="200px"/>
                     </row>
                     <row>
                         Password:
-                        <textbox value="@bind(vm.password)" type="password"	 width="200px"/>
+                        <!--<label value="password"/>-->
+                        <textbox id="password" value="@bind(vm.password)"  type="password" width="200px"/>
                     </row>
                     <row align="right">
                         <label/>
-                        <button label="Login" onClick="@command('login')"/>
+                        <button label="Login" onClick="@command('login')" />
                     </row>
                 </rows>
             </grid>
