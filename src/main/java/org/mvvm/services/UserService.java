@@ -23,6 +23,15 @@ public class UserService {
         iUser.save(login,password);
     }
 
+    public User editUser(User user){
+        iUser.editUser(user);
+        return user;
+    }
+
+    public void remove(User user){
+        iUser.remove(user);
+    }
+
 //    public User findUserById(int id){
 //        return iUser.readUser(id);
 //    }

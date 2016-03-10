@@ -3,7 +3,8 @@
 <window title="Please enter login and password"
         width="auto"
         border="normal"
-        mode="overlapped" position="center"
+        mode="overlapped"
+        position="center"
         apply="org.zkoss.bind.BindComposer"
         viewModel="@id('vm') @init('org.mvvm.viewModel.FormValidator')">
     <div align="center">

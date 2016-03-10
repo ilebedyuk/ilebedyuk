@@ -11,4 +11,6 @@ public interface IUser {
     List<User> findAllUsers();
     User readUser(User user);
     void save(String login, String password);
+    User editUser(User user);
+    void remove(User user);
 }

@@ -10,6 +10,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Window;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -38,10 +39,7 @@ public class UsersViewModel {
         this.users = users;
     }
 
-    public UsersViewModel() {
-
-
-    }
+    public UsersViewModel() {}
 
     public List<User> getUsers() {
         return users;
@@ -67,11 +65,38 @@ public class UsersViewModel {
         window.doModal();
     }
 
+    @NotifyChange({"selectedUser"})
+    @Command
+    public void removeUser(){
+        if(selectedUser != null) {
+            userService.remove(selectedUser);
+            selectedUser = null;
+        }
+    }
+
+    @Command
+    public void showEditUser(){
+        if (selectedUser != null){
+            HashMap<String, Object> params = new HashMap<String, Object>();
+            params.put("user", selectedUser);
+            window = (Window) Executions.createComponents("/modalWindow/userInputForm.zul", null, params);
+            window.setTitle("Editing User");
+            window.doModal();
+        }
+    }
+
+    @GlobalCommand
+    public void closeWindow() {
+        if(window != null) {
+            window.onClose();
+            window = null;
+        }
+    }
+
     @NotifyChange({"users"})
     @GlobalCommand
     public void refresh() {
         users = userService.findAllUsers();
-        //showAddUser();
     }
 
 }

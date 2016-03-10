@@ -3,6 +3,7 @@ package org.mvvm.viewModel;
 import org.mvvm.Pojo.User;
 import org.mvvm.services.UserService;
 import org.mvvm.services.UserServiceSinglton;
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -39,6 +40,17 @@ public class UserInputViewModel {
     @Command
     public void add(){
         userService.save(user.getName(), user.getPassword());
-        user = new User();
+        closeWindow();
+    }
+
+    @Command
+    public void edit(){
+        User user = userService.editUser(this.user);
+        closeWindow();
+    }
+
+    @Command
+    public void closeWindow() {
+        BindUtils.postGlobalCommand(null, null, "closeWindow", null);
     }
 }

@@ -7,32 +7,38 @@
         onClose="self.visible = false; event.stopPropagation();"
         title="User input"
         border="none"
+        mode="overlapped"
         position="center"
-        width="500px">
+        width="300px">
     <style src="/css/style.css" />
-    <groupbox id="form" form="@id('fx') @load(vm.user) @save(vm.user, before={'addUser', 'add'})
-                              @validator('org.mvvm.viewModel.FormValidatorForAddUser')"
-              hflex="min">
+    <groupbox id="form" form="@id('fx') @load(vm.user) @save(vm.user, before={'addUser', 'add', 'edit'})" hflex="min">
         <grid >
             <columns>
                 <column width="100px" />
                 <column width="auto" />
             </columns>
             <rows>
+                <row visible="@load(not empty fx.id)">
+                    <label value="ID"/>
+                    <label value="@load(fx.id)"/>
+                </row>
                 <row>
                     <label value="username"/>
-                    <textbox id="login" value="@bind(fx.name)"/>
-                    <label class ="error" value="@load(vmsgs['name'])" />
+                    <textbox id="login" value="@bind(fx.name)"
+                             constraint="${c:new('org.mvvm.validators.UserNameConstraint')}"/>
+                    <!--<label class ="error" value="@load(vmsgs['name'])" />-->
                 </row>
                 <row>
                     <label value="password"/>
-                    <textbox id="password" value="@bind(fx.password)"/>
-                    <label class ="error" value="@load(vmsgs['password'])" />
+                    <textbox id="password" value="@bind(fx.password)"
+                             constraint="${c:new('org.mvvm.validators.PasswordConstraint')}"/>
+                    <!--<label class ="error" value="@load(vmsgs['password'])" />-->
                 </row>
             </rows>
         </grid>
         <hbox>
-            <button iconSclass="z-icon-save" label="Add" onClick="@command('add') @global-command('refresh')"  />
+            <button iconSclass="z-icon-save" label="Add" onClick="@command('add') @global-command('refresh')" visible="@load(empty fx.id)"/>
+            <button iconSclass="z-icon-save" label="Edit" onClick="@command('edit') @global-command('refresh')" visible="@load(not empty fx.id)"/>
         </hbox>
     </groupbox>
 </window>
