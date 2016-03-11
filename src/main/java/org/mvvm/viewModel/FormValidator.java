@@ -1,7 +1,7 @@
 package org.mvvm.viewModel;
 
-import org.mvvm.dao.lists.UserDaoImpl;
 import org.mvvm.services.UserService;
+import org.mvvm.services.UserServiceSinglton;
 import org.mvvm.services.ValidationService;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.zk.ui.Executions;
@@ -10,7 +10,7 @@ import org.zkoss.zk.ui.Executions;
  * @author amakarov
  */
 public class FormValidator {
-    private UserService userService = new UserService(new UserDaoImpl());
+    private UserService userService = UserServiceSinglton.getInstance();
     private ValidationService validationService = new ValidationService(userService);
 
     private String login;

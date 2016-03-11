@@ -1,13 +1,26 @@
 package org.mvvm.Pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author amakarov
  */
-
+@Document(collection = "users")
 public class User {
+    @Id
     private Integer id;
     private String name;
     private String password;
+    //private String mongodbId;
+
+//    public String getMongodbId() {
+//        return mongodbId;
+//    }
+//
+//    public void setMongodbId(String mongodbId) {
+//        this.mongodbId = mongodbId;
+//    }
 
     public User() {}
 
@@ -21,6 +34,11 @@ public class User {
 
     public User(Integer id, String name, String password) {
         this.id = id;
+        this.name = name;
+        this.password = password;
+    }
+
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
     }

@@ -17,7 +17,7 @@ public class ValidationService {
     public boolean isUser(String login, String password) {
         List<User> users = userService.findAllUsers();
         for (User user : users) {
-            if (login.equals(user.getPassword()) && (password.equals(user.getName()))) {
+            if (login.equals(user.getName()) && (password.equals(user.getPassword()))) {
                 return true;
             }
         }

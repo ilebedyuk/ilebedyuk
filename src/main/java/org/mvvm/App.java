@@ -1,25 +1,69 @@
-package org.mvvm;
-
-import org.mvvm.Pojo.User;
-import org.mvvm.dao.lists.UserDaoImpl;
-import org.mvvm.services.UserService;
-import org.mvvm.services.ValidationService;
-
-import java.util.List;
-
-/**
- * @author amakarov
- */
-public class App {
-    public static void main(String[] args) {
-        UserService userService = new UserService(new UserDaoImpl());
-        List<User> users = userService.findAllUsers();
-
-        for (User user : users) {
-            System.out.println(user);
-        }
-
-        ValidationService validationService = new ValidationService(userService);
-        System.out.println(validationService.isUser("test", "test"));
-    }
-}
+//package org.mvvm;
+//
+//import org.mvvm.Pojo.User;
+//import org.mvvm.dao.mongoDbSpring.SpringMongoConfig;
+//import org.springframework.context.ApplicationContext;
+//import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+//import org.springframework.data.mongodb.core.MongoOperations;
+//import org.springframework.data.mongodb.core.query.Criteria;
+//import org.springframework.data.mongodb.core.query.Query;
+//import org.springframework.data.mongodb.core.query.Update;
+//
+//import java.util.List;
+//
+///**
+// * @author amakarov
+// */
+//public class App {
+//    public static void main(String[] args) {
+////        UserService userService = UserServiceSinglton.getInstance();
+////        List<User> users = userService.findAllUsers();
+////
+////        for (User user : users) {
+////            System.out.println(user);
+////        }
+////
+////        ValidationService validationService = new ValidationService(userService);
+////        System.out.println(validationService.isUser("Vasy", "12345"));
+//
+//        // For XML
+//        //ApplicationContext ctx = new GenericXmlApplicationContext("SpringConfig.xml");
+//
+//        // For Annotation
+//        ApplicationContext ctx =
+//                new AnnotationConfigApplicationContext(SpringMongoConfig.class);
+//        MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+//
+//        User user = new User("mkyong", "password123");
+//
+//        // save
+//        mongoOperation.save(user);
+//
+//        // now user object got the created id.
+//        System.out.println("1. user : " + user);
+//
+//        // query to search user
+//        Query searchUserQuery = new Query(Criteria.where("username").is("mkyong"));
+//
+//        // find the saved user again.
+//        User savedUser = mongoOperation.findOne(searchUserQuery, User.class);
+//        System.out.println("2. find - savedUser : " + savedUser);
+//
+//        // update password
+//        mongoOperation.updateFirst(searchUserQuery,
+//                Update.update("password", "new password"),User.class);
+//
+//        // find the updated user object
+//        User updatedUser = mongoOperation.findOne(searchUserQuery, User.class);
+//
+//        System.out.println("3. updatedUser : " + updatedUser);
+//
+//        // delete
+//        mongoOperation.remove(searchUserQuery, User.class);
+//
+//        // List, it should be empty now.
+//        List<User> listUser = mongoOperation.findAll(User.class);
+//        System.out.println("4. Number of user = " + listUser.size());
+//
+//    }
+//}

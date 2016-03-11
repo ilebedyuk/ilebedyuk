@@ -21,7 +21,7 @@ public class UsersViewModel {
     private User selectedUser;
     private Window window;
 
-    private UserService userService = UserServiceSinglton.getInstance();;
+    private UserService userService = UserServiceSinglton.getInstance();
 
 //    //public UsersViewModel(UserService userService) {
 //        this.userService = userService;
